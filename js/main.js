@@ -255,10 +255,12 @@ const app = Vue.createApp({
   },
   mounted() {
     document.addEventListener('keyup', this.onKeyDown)
+    document.addEventListener('touchend', this.onKeyDown)
     this.createScramble()
   },
   beforeDestroy() {
     document.removeEventListener('keyup', this.onKeyDown)
+    document.addEventListener('touchend', this.onKeyDown)
   },
 })
 app.mount('#app')
