@@ -11,22 +11,20 @@
 <body>
   <header>
     <h1>PLL Trainer</h1>
-    presented by <a href="https://roudai.net">roudai.net</a><br>
+    <div style="font-size:small">presented by <a href="https://roudai.net">roudai.net</a></div>
   </header>
 
   <main>
     <div id="app">
       <label class="open" for="pop-up">
-        <div style="text-align: right"><img src="img/gear-solid.svg" height="24" width="24"></div>
+        <div style="text-align: right"><img src="img/gear.svg" height="25" width="25"></div>
       </label>
       <input type="checkbox" id="pop-up">
       <div class="overlay">
         <div class="window">
-          <label class="close" for="pop-up">Close</label>
+          <label class="close" for="pop-up"><img src="img/close.svg" height="24" width="24"></label>
           <p>
-            <label><input type="checkbox" id="all" value="all" v-model="allSelect">ALL</label><br>
-          </p>
-          <p>
+            <label><input type="checkbox" id="all" value="all" v-model="allSelect" style="text-indent: 1rem;"><b>ALL</b></label><br>
             <label><input type="checkbox" id="pt1" value="pt1" v-model="caseSelect">3-BAR</label><br>
             <label><input type="checkbox" id="pt2" value="pt2" v-model="caseSelect">DOUBLE LIGHTS</label><br>
             <label><input type="checkbox" id="pt3" value="pt3" v-model="caseSelect">LIGHTS + 2-BAR</label><br>
@@ -53,7 +51,7 @@
       </details> -->
 
       <div style="text-align: center">
-        <p>{{ scramble }}</p>
+        <div style="font-size:medium">{{ scramble }}</div>
         <div id="visualcube"></div>
       </div>
       

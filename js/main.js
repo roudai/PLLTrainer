@@ -1,8 +1,8 @@
 const app = Vue.createApp({
   data: () => ({
     scramble: "",
-    scrambleSplit: "",
     allSelect: true,
+    showAnswer: false,
     caseSelect: ["pt1","pt2","pt3","pt4","pt5","pt6","pt7","pt8","pt9"],
     pll_3BAR:[
       "R2 U R U R' U' R' U' R' U R' y2",
@@ -195,7 +195,7 @@ const app = Vue.createApp({
   
       const inverseScramble = this.inverse(algorithm[Math.floor(Math.random() * algorithm.length)])
       console.log(inverseScramble)
-      this.scramble = cubeSolver.solve("y2" + inverseScramble)
+      this.scramble = cubeSolver.solve(inverseScramble)
 
       const parameter = {}
       parameter.algorithm = this.scramble
@@ -204,7 +204,10 @@ const app = Vue.createApp({
       const SRVisualizer = window['sr-visualizer'];
       console.log(element)
       if(element.lastChild !== null){
-        element.removeChild(element.lastElementChild)
+        // element.removeChild(element.lastElementChild)
+        while (element.lastElementChild) {
+          element.removeChild(element.lastElementChild);
+        }
       }
       SRVisualizer.cubePNG(element, parameter)
     },
