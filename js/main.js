@@ -207,8 +207,6 @@ const app = Vue.createApp({
         element.removeChild(element.lastElementChild)
       }
       SRVisualizer.cubePNG(element, parameter)
-
-      setTimeout(() => { }, 1000)
     },
     inverse(scramble){
       let scrambleSplit
@@ -242,6 +240,9 @@ const app = Vue.createApp({
       if(event.code === 'Space'){
         this.createScramble()
       }
+    },
+    onTouch(event){
+      this.createScramble()
     }
   },
   watch: {
@@ -255,12 +256,12 @@ const app = Vue.createApp({
   },
   mounted() {
     document.addEventListener('keyup', this.onKeyDown)
-    document.getElementById("app").addEventListener('touchend', this.onKeyDown)
+    document.addEventListener('touchend', this.onTouch)
     this.createScramble()
   },
   beforeDestroy() {
     document.removeEventListener('keyup', this.onKeyDown)
-    document.getElementById("app").addEventListener('touchend', this.onKeyDown)
+    document.addEventListener('touchend', this.onTouch)
   },
 })
 app.mount('#app')
