@@ -1,6 +1,7 @@
 const app = Vue.createApp({
   data: () => ({
     scramble: "",
+    mask: true,
     allSelect: true,
     showAnswer: false,
     caseSelect: ["pt1","pt2","pt3","pt4","pt5","pt6","pt7","pt8","pt9"],
@@ -198,13 +199,17 @@ const app = Vue.createApp({
       this.scramble = cubeSolver.solve(inverseScramble)
 
       const parameter = {}
+      if(this.mask){
+        parameter.mask = "ll"
+      }
       parameter.algorithm = this.scramble
+      parameter.width = 200
+      parameter.height = 200
 
       const element = document.getElementById('visualcube')
       const SRVisualizer = window['sr-visualizer'];
       console.log(element)
       if(element.lastChild !== null){
-        // element.removeChild(element.lastElementChild)
         while (element.lastElementChild) {
           element.removeChild(element.lastElementChild);
         }

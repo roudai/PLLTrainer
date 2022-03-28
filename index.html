@@ -24,7 +24,10 @@
         <div class="window">
           <label class="close" for="pop-up"><img src="img/close.svg" height="24" width="24"></label>
           <p>
-            <label><input type="checkbox" id="all" value="all" v-model="allSelect" style="text-indent: 1rem;"><b>ALL</b></label><br>
+            <label><input type="checkbox" id="mask" value="mask" v-model="mask">Mask F2L</label><br>
+          </p>
+          <p>
+            <label><input type="checkbox" id="all" value="all" v-model="allSelect"><b>ALL</b></label><br>
             <label><input type="checkbox" id="pt1" value="pt1" v-model="caseSelect">3-BAR</label><br>
             <label><input type="checkbox" id="pt2" value="pt2" v-model="caseSelect">DOUBLE LIGHTS</label><br>
             <label><input type="checkbox" id="pt3" value="pt3" v-model="caseSelect">LIGHTS + 2-BAR</label><br>
@@ -37,18 +40,6 @@
           </p>
         </div>
       </div>
-      <!-- <details>
-        <summary>COLOR SETTING</summary>
-        <p>
-          <label><input type="checkbox" id="checkbox" value="all">ALL</label><br>
-          <label><input type="checkbox" id="checkbox" value="all">white</label><br>
-          <label><input type="checkbox" id="checkbox" value="all">yellow</label><br>
-          <label><input type="checkbox" id="checkbox" value="all">blue</label><br>
-          <label><input type="checkbox" id="checkbox" value="all">green</label><br>
-          <label><input type="checkbox" id="checkbox" value="all">red</label><br>
-          <label><input type="checkbox" id="checkbox" value="all">orange</label><br>
-        </p>
-      </details> -->
 
       <div style="text-align: center">
         <div style="font-size:medium">{{ scramble }}</div>
