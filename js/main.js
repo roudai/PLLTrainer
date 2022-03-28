@@ -1,6 +1,8 @@
 const app = Vue.createApp({
   data: () => ({
     scramble: "",
+    parameter: {},
+    subNum: 0,
     mask: true,
     allSelect: true,
     showAnswer: false,
@@ -178,6 +180,8 @@ const app = Vue.createApp({
   }),
   methods: {
     createScramble(){
+      this.showAnswer ? this.showAnswer = false : this.showAnswer = true
+      console.log(this.showAnswer)
       let algorithm = []
       if(this.caseSelect.includes("pt1")) algorithm = algorithm.concat(this.pll_3BAR)
       if(this.caseSelect.includes("pt2")) algorithm = algorithm.concat(this.pll_DoubleLights)
@@ -189,22 +193,40 @@ const app = Vue.createApp({
       if(this.caseSelect.includes("pt8")) algorithm = algorithm.concat(this.PLL_Bookends_NoBAR)
       if(this.caseSelect.includes("pt6")) algorithm = algorithm.concat(this.PLL_No_Bookends)
 
+      let arrow = []
+      if(this.caseSelect.includes("pt1")) arrow = arrow.concat(this.pll_3BAR_arrow)
+      if(this.caseSelect.includes("pt2")) arrow = arrow.concat(this.pll_DoubleLights_arrow)
+      if(this.caseSelect.includes("pt3")) arrow = arrow.concat(this.pll_Lights_2BAR_arrow)
+      if(this.caseSelect.includes("pt4")) arrow = arrow.concat(this.PLL_Lone_Lights_arrow)
+      if(this.caseSelect.includes("pt5")) arrow = arrow.concat(this.PLL_Double_2BAR_arrow)
+      if(this.caseSelect.includes("pt6")) arrow = arrow.concat(this.PLL_Outside_2BAR_arrow)
+      if(this.caseSelect.includes("pt7")) arrow = arrow.concat(this.PLL_Inside_2BAR_arrow)
+      if(this.caseSelect.includes("pt8")) arrow = arrow.concat(this.PLL_Bookends_NoBAR_arrow)
+      if(this.caseSelect.includes("pt6")) arrow = arrow.concat(this.PLL_No_Bookends_arrow)
+
       if(!algorithm.length){
         this.scramble = "you mast select a case."
         return
       }
   
-      const inverseScramble = this.inverse(algorithm[Math.floor(Math.random() * algorithm.length)])
+      if(!this.showAnswer){
+        this.subNum = Math.floor(Math.random() * algorithm.length)
+      }
+
+      const inverseScramble = this.inverse(algorithm[this.subNum])
       console.log(inverseScramble)
       this.scramble = cubeSolver.solve(inverseScramble)
 
-      const parameter = {}
+      this.parameter = {}
       if(this.mask){
-        parameter.mask = "ll"
+        this.parameter.mask = "ll"
       }
-      parameter.algorithm = this.scramble
-      parameter.width = 200
-      parameter.height = 200
+      this.parameter.algorithm = this.scramble
+      if( this.showAnswer){
+        this.parameter.arrows = arrow[this.subNum]
+      }
+      this.parameter.width = 200
+      this.parameter.height = 200
 
       const element = document.getElementById('visualcube')
       const SRVisualizer = window['sr-visualizer'];
@@ -214,7 +236,7 @@ const app = Vue.createApp({
           element.removeChild(element.lastElementChild);
         }
       }
-      SRVisualizer.cubePNG(element, parameter)
+      SRVisualizer.cubePNG(element, this.parameter)
     },
     inverse(scramble){
       let scrambleSplit
@@ -251,7 +273,7 @@ const app = Vue.createApp({
     },
     onTouch(event){
       this.createScramble()
-    }
+    },
   },
   watch: {
     allSelect: function(newVal){
