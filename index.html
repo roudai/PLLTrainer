@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/simpledotcss/simple.min.css">
+  <!-- <script src="css/main.css"></script> -->
+  <title>Document</title>
+</head>
+<body>
+  <header>
+    <h1>PLL Trainer</h1>
+    presented by <a href="https://roudai.net">roudai.net</a>
+  </header>
+
+  <main>
+    <div id="app">
+      <!-- <details>
+        <summary>COLOR SETTING</summary>
+        <p>
+          <label><input type="checkbox" id="checkbox" value="all">ALL</label><br>
+          <label><input type="checkbox" id="checkbox" value="all">white</label><br>
+          <label><input type="checkbox" id="checkbox" value="all">yellow</label><br>
+          <label><input type="checkbox" id="checkbox" value="all">blue</label><br>
+          <label><input type="checkbox" id="checkbox" value="all">green</label><br>
+          <label><input type="checkbox" id="checkbox" value="all">red</label><br>
+          <label><input type="checkbox" id="checkbox" value="all">orange</label><br>
+        </p>
+      </details> -->
+      <details>
+        <summary>SELECT CASE</summary>
+        <p>
+          <label><input type="checkbox" id="all" value="all" v-model="allSelect">ALL</label><br>
+        </p>
+        <p>
+          <label><input type="checkbox" id="pt1" value="pt1" v-model="caseSelect">3-BAR</label><br>
+          <label><input type="checkbox" id="pt2" value="pt2" v-model="caseSelect">DOUBLE LIGHTS</label><br>
+          <label><input type="checkbox" id="pt3" value="pt3" v-model="caseSelect">LIGHTS + 2-BAR</label><br>
+          <label><input type="checkbox" id="pt4" value="pt4" v-model="caseSelect">LONE LIGHTS</label><br>
+          <label><input type="checkbox" id="pt5" value="pt5" v-model="caseSelect">DOUBLE 2-BAR</label><br>
+          <label><input type="checkbox" id="pt6" value="pt6" v-model="caseSelect">OUTSIDE 2-BAR</label><br>
+          <label><input type="checkbox" id="pt7" value="pt7" v-model="caseSelect">INSIDE 2-BAR</label><br>
+          <label><input type="checkbox" id="pt8" value="pt8" v-model="caseSelect">BOOKENDS NO BAR</label><br>
+          <label><input type="checkbox" id="pt9" value="pt9" v-model="caseSelect">NO BOOKENDS</label>
+        </p>
+      </details>
+
+      <div style="text-align: center">
+        <p>{{ scramble }}</p>
+        <div id="visualcube"></div>
+      </div>
+      
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2012-2022 roudai.net</p>
+  </footer>
+
+  <script src="library/srVisualizer.min.js"></script>
+  <script src="https://unpkg.com/cube-solver@2.4.1/dist/bundle.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@3.2.31"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
