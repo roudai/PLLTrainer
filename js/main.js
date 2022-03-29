@@ -8,8 +8,10 @@ const app = Vue.createApp({
     preNum: 0,
     mask: true,
     tip: true,
+    cube: true,
     allSelect: true,
     showAnswer: true,
+    topColor: "yellow",
     caseSelect: ["pt1","pt2","pt3","pt4","pt5","pt6","pt7","pt8","pt9"],
     pll_3BAR:[
       "R2 U R U R' U' R' U' R' U R' y2",
@@ -327,6 +329,25 @@ const app = Vue.createApp({
       this.parameter.height = 200
       if(this.showAnswer){
         this.parameter.arrows = arrow[this.subNum]
+      }
+      switch(this.topColor) {
+        case 'yellow':
+          break
+        case 'red':
+          this.parameter.colorScheme = { "0": "#ee0000", "1": "#ffffff", "2": "#0000f2", "3": "#ffa100", "4": "#fefe00", "5": "#00d800" }
+          break
+        case 'blue':
+          this.parameter.colorScheme = {"0": "#0000f2", "1": "#ee0000", "2": "#ffffff", "3": "#00d800", "4": "#ffa100", "5": "#fefe00" }
+          break
+        case 'white':
+          this.parameter.colorScheme = { "0": "#ffffff", "1": "#ffa100", "2": "#0000f2", "3": "#fefe00", "4": "#ee0000", "5": "#00d800" }
+          break
+        case 'orange':
+          this.parameter.colorScheme =  { "0": "#ffa100", "1": "#fefe00", "2": "#0000f2", "3": "#ee0000", "4": "#ffffff", "5": "#00d800" }
+          break
+        case 'green':
+          this.parameter.colorScheme = { "0": "#00d800", "1": "#ee0000", "2": "#fefe00", "3": "#0000f2", "4": "#ffa100", "5": "#ffffff" }
+          break
       }
 
       const element = document.getElementById('visualcube')

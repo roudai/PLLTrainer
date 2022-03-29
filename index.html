@@ -6,7 +6,8 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
   <link rel="stylesheet" href="https://unpkg.com/simpledotcss/simple.min.css">
   <link rel="stylesheet" type="text/css" href="css/main.css">
-  <title>Document</title>
+  <style>[v-cloak] { display: none; }</style>
+  <title>PLL Trainer</title>
 </head>
 <body>
   <header>
@@ -22,7 +23,7 @@
   </header>
 
   <main>
-    <div id="app">
+    <div id="app" v-cloak>
       <label class="open" for="pop-up">
         <div style="text-align: right"><img src="img/gear.svg" height="20" width="20"></div>
       </label>
@@ -32,7 +33,16 @@
           <label class="close" for="pop-up"><img src="img/close.svg" height="24" width="24"></label>
           <p>
             <label><input type="checkbox" id="mask" value="mask" v-model="mask">Mask F2L</label>
-            <label><input type="checkbox" id="tip" value="tip" v-model="tip">View Tip</label><br>
+            <label><input type="checkbox" id="tip" value="tip" v-model="tip">View Tip</label>
+            <label><input type="checkbox" id="cube" value="cube" v-model="cube">Show Cube</label>
+            <select v-model="topColor" style="background-color: snow; color: black">
+              <option value="yellow">Yellow</option>
+              <option value="red">Red</option>
+              <option value="blue">Blue</option>
+              <option value="white">White</option>
+              <option value="orange">Orange</option>
+              <option value="green">Green</option>
+            </select>
           </p>
           <p>
             <label><input type="checkbox" id="all" value="all" v-model="allSelect"><b>ALL</b></label><br>
@@ -52,7 +62,7 @@
       <div style="text-align: center">
         <div style="font-size:medium">{{ scramble }}</div>
         <div style="height: 200px;">
-          <div id="visualcube"></div>
+          <div v-show="cube || showAnswer" id="visualcube"></div>
         </div>
         <div v-show="tip" style="font-size:medium">{{ pattern }}</div>
       </div>
