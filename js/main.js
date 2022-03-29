@@ -1,9 +1,10 @@
 const app = Vue.createApp({
   data: () => ({
     scramble: "",
-    preRotate: ["","y","y'","y2"],
+    preRotate: ["","U ","U' ","U2 "],
     parameter: {},
     subNum: 0,
+    preNum: 0,
     mask: true,
     allSelect: true,
     showAnswer: false,
@@ -211,12 +212,12 @@ const app = Vue.createApp({
   
       if(!this.showAnswer){
         this.subNum = Math.floor(Math.random() * algorithm.length)
+        this.preNum = Math.floor(Math.random() * this.preRotate.length)
       }
 
       const inverseScramble = this.inverse(algorithm[this.subNum])
       console.log(inverseScramble)
-      this.scramble = cubeSolver.solve(inverseScramble)
-      this.scramble = this.preRotate[Math.floor(Math.random() * this.preRotate.length)] + this.scramble
+      this.scramble = this.preRotate[this.preNum] + cubeSolver.solve(inverseScramble)
 
       this.parameter = {}
       if(this.mask){
