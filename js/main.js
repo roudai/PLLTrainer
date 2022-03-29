@@ -1,13 +1,15 @@
 const app = Vue.createApp({
   data: () => ({
     scramble: "",
+    pattern: "",
     preRotate: ["","U ","U' ","U2 "],
     parameter: {},
     subNum: 0,
     preNum: 0,
     mask: true,
+    tip: true,
     allSelect: true,
-    showAnswer: false,
+    showAnswer: true,
     caseSelect: ["pt1","pt2","pt3","pt4","pt5","pt6","pt7","pt8","pt9"],
     pll_3BAR:[
       "R2 U R U R' U' R' U' R' U R' y2",
@@ -33,6 +35,18 @@ const app = Vue.createApp({
       "U0U2,U2U0,U3U5,U5U3",
       "U0U6,U6U0,U1U7,U7U1"
     ],
+    pll_3BAR_pattern:[
+      "3-BAR - headligts",
+      "3-BAR - headligts",
+      "3-BAR - headligts",
+      "3-BAR - headligts",
+      "3-BAR - 2-bar",
+      "3-BAR - 2-bar",
+      "3-BAR - 2-bar",
+      "3-BAR - 2-bar",
+      "3-BAR - 4 colors",
+      "3-BAR - 4 colors",
+    ],
     pll_DoubleLights:[
       "M' U M2' U M2' U M' U2 M2'",
       "M' U M2' U M2' U M' U2 M2' U'",
@@ -50,6 +64,15 @@ const app = Vue.createApp({
       "U5U3-s8,U7U5-s8,U3U7-s8",
       "U1U5-s8,U5U7-s8,U7U1,s8",
       "U5U1-s8,U7U5-s8,U1U7-s8",
+    ],
+    pll_DoubleLights_pattern:[
+      "DOUBLE LIGTS - 2-color 6-checker",
+      "DOUBLE LIGTS - adj edges & 4 colors",
+      "DOUBLE LIGTS - opp edges",
+      "DOUBLE LIGTS - 2:1 pattern & 3 colors",
+      "DOUBLE LIGTS - 2:1 pattern & 3 colors",
+      "DOUBLE LIGTS - 2:1 pattern & 3 colors",
+      "DOUBLE LIGTS - 2:1 pattern & 3 colors",
     ],
     pll_Lights_2BAR:[
       "R U R' U' R' F R2 U' R' U' R U R' F' y'",
@@ -71,6 +94,16 @@ const app = Vue.createApp({
       "U0U8-s8,U8U6-s8,U6U0-s8,U1U3-s6,U3U7-s6,U7U1-s6",
       "U0U8-s8,U8U2-s8,U2U0-s8,U1U5-s6,U5U3-s6,U3U1-s6",
     ],
+    pll_Lights_2BAR_pattern:[
+      "LIGHTS + 2-BAR - inside bar & 3 colors",
+      "LIGHTS + 2-BAR - inside bar & 3 colors",
+      "LIGHTS + 2-BAR - inside bar & 4 colors",
+      "LIGHTS + 2-BAR - inside bar & 4 colors",
+      "LIGHTS + 2-BAR - outer bar & 3 colors",
+      "LIGHTS + 2-BAR - outer bar & 3 colors",
+      "LIGHTS + 2-BAR - outer bar & 4 color",
+      "LIGHTS + 2-BAR - outer bar & 4 color",
+    ],
     PLL_Lone_Lights:[
       "R' U2 R U2 R' F R U R' U' R' F' R2 U'",
       "R U' R' U' R U R D R' U' R D' R' U2 R' U' y2",
@@ -91,6 +124,16 @@ const app = Vue.createApp({
       "U2U6-s8,U6U8-s8,U8U2-s8",
       "U2U8-s8,U8U6-s8,U6U2-s8",
     ],
+    PLL_Lone_Lights_pattern:[
+      "LONE LIGHTS - 5-checker",
+      "LONE LIGHTS - 5-checker",
+      "LONE LIGHTS - 4-checker",
+      "LONE LIGHTS - 4-checker",
+      "LONE LIGHTS - lights enclose opp",
+      "LONE LIGHTS - lights enclose opp",
+      "LONE LIGHTS - lights enclose adj (but no checker)",
+      "LONE LIGHTS - lights enclose adj (but no checker)",
+    ],
     PLL_Double_2BAR:[
       "F R U' R' U' R U R' F' R U R' U' R' F R F'",
       "x' R U' R D2 R' U R D2 R2 x y2",
@@ -110,6 +153,16 @@ const app = Vue.createApp({
       "U2U8,U8U2,U5U7-s8,U7U5-s8",
       "U0U8,U8U0,U3U5,U5U3",
       "U0U8,U8U0,U1U7,U7U1",
+    ],
+    PLL_Double_2BAR_pattern:[
+      "DOUBLE 2-BAR - both outside",
+      "DOUBLE 2-BAR - both inside & bookends",
+      "DOUBLE 2-BAR - both inside & bookends",
+      "DOUBLE 2-BAR - inside & no bookends",
+      "DOUBLE 2-BAR - same side & bookend",
+      "DOUBLE 2-BAR - same side & bookend",
+      "DOUBLE 2-BAR - same side & no bookend",
+      "DOUBLE 2-BAR - same side & no bookend",
     ],
     PLL_Outside_2BAR:[
       "R' U R U' R' f' U' R U2 R' U' R U' R' f R",
@@ -135,6 +188,18 @@ const app = Vue.createApp({
       "U0U2-s8,U2U8-s8,U8U0-s8",
       "U0U6-s8,U6U8-s8,U8U0-s8",
     ],
+    PLL_Outside_2BAR_pattern:[
+      "OUTSIDE 2-BAR - no bookend",
+      "OUTSIDE 2-BAR - no bookend",
+      "OUTSIDE 2-BAR - adj appears twice",
+      "OUTSIDE 2-BAR - adj appears twice",
+      "OUTSIDE 2-BAR - opp appears twice",
+      "OUTSIDE 2-BAR - opp appears twice",
+      "OUTSIDE 2-BAR - adj by bar & 4 colors",
+      "OUTSIDE 2-BAR - adj by bar & 4 colors",
+      "OUTSIDE 2-BAR - opp by bar & 4 colors",
+      "OUTSIDE 2-BAR - opp by bar & 4 colors",
+    ],
     PLL_Inside_2BAR:[
       "D R' U' R U D' R2 U R' U R U' R U' R2' U' y",
       "D' R U R' U' D R2 U' R U' R' U R' U R2 U",
@@ -150,6 +215,14 @@ const app = Vue.createApp({
       "U0U2-s8,U2U6-s8,U6U0-s8,U1U3-s6,U3U7-s6,U7U1-s6",
       "U2U6,U6U2,U1U5,U5U1",
       "U2U6,U6U2,U3U7,U7U3",
+    ],
+    PLL_Inside_2BAR_pattern:[
+      "INSIDE 2-BAR - bookends adj color",
+      "INSIDE 2-BAR - bookends adj color",
+      "INSIDE 2-BAR - bookends opp col",
+      "INSIDE 2-BAR - bookends opp col",
+      "INSIDE 2-BAR - no bookend",
+      "INSIDE 2-BAR - no bookend",
     ],
     PLL_Bookends_NoBAR:[
       "R' U' F' R U R' U' R' F R2 U' R' U' R U R' U R y",
@@ -167,6 +240,14 @@ const app = Vue.createApp({
       "U0U6-s8,U6U8-s8,U8U0-s8,U3U5-s6,U5U7-s6,U7U3-s6",
       "U0U2-s8,U2U8-s8,U8U0-s8,U1U7-s6,U7U5-s6,U5U1-s6",
     ],
+    PLL_Bookends_NoBAR_pattern:[
+      "BOOKENDS NO BAR - enclosed 4-checker",
+      "BOOKENDS NO BAR - enclosed 4-checker",
+      "BOOKENDS NO BAR - adj appears twice",
+      "BOOKENDS NO BAR - adj appears twice",
+      "BOOKENDS NO BAR - opp appears twice",
+      "BOOKENDS NO BAR - opp appears twice",
+    ],
     PLL_No_Bookends:[
       "R' U R U' R' f' U' R U2 R' U' R U' R' f R y",
       "F R U' R' U' R U R' F' R U R' U' R' F R F' y2",
@@ -178,6 +259,12 @@ const app = Vue.createApp({
       "U0U8,U8U0,U5U7,U7U5",
       "U0U2,U2U0,U6U8,U8U6",
       "U0U6,U6U0,U2U8,U2U8",
+    ],
+    PLL_No_Bookends_pattern:[
+      "NO BOOKENDS - inner 4-checker",
+      "NO BOOKENDS - outer 4-checker",
+      "NO BOOKENDS - 5-checker w/ opp middle",
+      "NO BOOKENDS - 5-checker w/ opp middle",
     ],
   }),
   methods: {
@@ -205,6 +292,17 @@ const app = Vue.createApp({
       if(this.caseSelect.includes("pt8")) arrow = arrow.concat(this.PLL_Bookends_NoBAR_arrow)
       if(this.caseSelect.includes("pt6")) arrow = arrow.concat(this.PLL_No_Bookends_arrow)
 
+      let pattern = []
+      if(this.caseSelect.includes("pt1")) pattern = pattern.concat(this.pll_3BAR_pattern)
+      if(this.caseSelect.includes("pt2")) pattern = pattern.concat(this.pll_DoubleLights_pattern)
+      if(this.caseSelect.includes("pt3")) pattern = pattern.concat(this.pll_Lights_2BAR_pattern)
+      if(this.caseSelect.includes("pt4")) pattern = pattern.concat(this.PLL_Lone_Lights_pattern)
+      if(this.caseSelect.includes("pt5")) pattern = pattern.concat(this.PLL_Double_2BAR_pattern)
+      if(this.caseSelect.includes("pt6")) pattern = pattern.concat(this.PLL_Outside_2BAR_pattern)
+      if(this.caseSelect.includes("pt7")) pattern = pattern.concat(this.PLL_Inside_2BAR_pattern)
+      if(this.caseSelect.includes("pt8")) pattern = pattern.concat(this.PLL_Bookends_NoBAR_pattern)
+      if(this.caseSelect.includes("pt6")) pattern = pattern.concat(this.PLL_No_Bookends_pattern)
+
       if(!algorithm.length){
         this.scramble = "you mast select a case."
         return
@@ -213,6 +311,7 @@ const app = Vue.createApp({
       if(!this.showAnswer){
         this.subNum = Math.floor(Math.random() * algorithm.length)
         this.preNum = Math.floor(Math.random() * this.preRotate.length)
+        this.pattern = pattern[this.subNum]
       }
 
       const inverseScramble = this.inverse(algorithm[this.subNum])
@@ -224,11 +323,11 @@ const app = Vue.createApp({
         this.parameter.mask = "ll"
       }
       this.parameter.algorithm = this.scramble
-      if( this.showAnswer){
-        this.parameter.arrows = arrow[this.subNum]
-      }
       this.parameter.width = 200
       this.parameter.height = 200
+      if(this.showAnswer){
+        this.parameter.arrows = arrow[this.subNum]
+      }
 
       const element = document.getElementById('visualcube')
       const SRVisualizer = window['sr-visualizer'];

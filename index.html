@@ -24,7 +24,8 @@
         <div class="window">
           <label class="close" for="pop-up"><img src="img/close.svg" height="24" width="24"></label>
           <p>
-            <label><input type="checkbox" id="mask" value="mask" v-model="mask">Mask F2L</label><br>
+            <label><input type="checkbox" id="mask" value="mask" v-model="mask">Mask F2L</label>
+            <label><input type="checkbox" id="tip" value="tip" v-model="tip">View Tip</label><br>
           </p>
           <p>
             <label><input type="checkbox" id="all" value="all" v-model="allSelect"><b>ALL</b></label><br>
@@ -44,6 +45,7 @@
       <div style="text-align: center">
         <div style="font-size:medium">{{ scramble }}</div>
         <div id="visualcube"></div>
+        <div v-show="tip" style="font-size:medium">{{ pattern }}</div>
       </div>
       
     </div>
