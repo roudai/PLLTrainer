@@ -209,7 +209,7 @@ const app = Vue.createApp({
       "F R U' R' U' R U R' F' R U R' U' R' F R F' y'",
     ],
     PLL_Inside_2BAR_arrow:[
-      "U0U2-s8,U7U6-s8,U6U0-s8,U1U3-s6,U3U5-s6,U5U1-s6",
+      "U0U2-s8,U2U6-s8,U6U0-s8,U1U3-s6,U3U5-s6,U5U1-s6",
       "U0U6,s8,U6U2-s8,U2U0-s8,U1U7-s6,U7U3-s6,U3U1-s6",
       "U0U6-s8,U6U2-s8,U2U0-s8,U1U5-s6,U5U3-s6,U3U1-s6",
       "U0U2-s8,U2U6-s8,U6U0-s8,U1U3-s6,U3U7-s6,U7U1-s6",
