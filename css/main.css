@@ -1,3 +1,13 @@
+header{
+  background: beige !important;
+}
+body{
+   background-color: blanchedalmond;
+  color: black;
+}
+a, a:visited{
+  color: black;
+}
 .open {
 	cursor:pointer;
 }
