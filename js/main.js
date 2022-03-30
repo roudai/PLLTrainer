@@ -317,7 +317,6 @@ const app = Vue.createApp({
       }
 
       const inverseScramble = this.inverse(algorithm[this.subNum])
-      console.log(inverseScramble)
       this.scramble = this.preRotate[this.preNum] + cubeSolver.solve(inverseScramble)
 
       this.parameter = {}
@@ -352,7 +351,6 @@ const app = Vue.createApp({
 
       const element = document.getElementById('visualcube')
       const SRVisualizer = window['sr-visualizer'];
-      console.log(element)
       if(element.lastChild !== null){
         while (element.lastElementChild) {
           element.removeChild(element.lastElementChild);
