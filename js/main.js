@@ -351,12 +351,14 @@ const app = Vue.createApp({
 
       const element = document.getElementById('visualcube')
       const SRVisualizer = window['sr-visualizer'];
-      if(element.lastChild !== null){
-        while (element.lastElementChild) {
-          element.removeChild(element.lastElementChild);
+      this.$nextTick(function() {
+        if(element.lastChild !== null){
+          while (element.lastElementChild) {
+            element.removeChild(element.lastElementChild);
+          }
         }
-      }
-      SRVisualizer.cubePNG(element, this.parameter)
+        SRVisualizer.cubePNG(element, this.parameter)
+      })
     },
     inverse(scramble){
       let scrambleSplit
