@@ -311,7 +311,7 @@ const app = Vue.createApp({
         this.pattern = pattern[this.subNum];
       }
 
-      const inversehis.inverse(Scramble = talgorithm[this.subNum]);
+      const inverseScramble = this.inverse(algorithm[this.subNum]);
       this.scramble = this.preRotate[this.preNum] + cubeSolver.solve(inverseScramble);
 
       this.parameter = {};
