@@ -420,7 +420,7 @@ const app = Vue.createApp({
         this.createScramble();
       }
     },
-    onTouch(event) {
+    onTouch() {
       this.createScramble();
     },
     allSelectChange() {
