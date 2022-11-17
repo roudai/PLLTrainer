@@ -3,10 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta
-      name="viewport"
-      content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"
-    />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
     <link rel="stylesheet" href="https://unpkg.com/simpledotcss/simple.min.css" />
     <link rel="stylesheet" type="text/css" href="css/main.css" />
     <link rel="shortcut icon" href="img/icon.ico" />
@@ -26,14 +23,7 @@
         presented by
         <a href="https://roudai.net/pll/two-sided-pll/">roudai.net</a>
         <a href="https://github.com/roudai/PLLTrainer">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="12"
-            height="12"
-            fill="currentColor"
-            class="bi bi-github"
-            viewBox="0 0 16 16"
-          >
+          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
             <path
               d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
             />
@@ -66,16 +56,19 @@
               <option value="green">Green</option>
             </select>
 
-            <label><input type="checkbox" id="all" value="all" v-model="allSelect" /><b>ALL</b></label>
-            <label><input type="checkbox" id="pt1" value="pt1" v-model="caseSelect" />3-BAR</label>
-            <label><input type="checkbox" id="pt2" value="pt2" v-model="caseSelect" />DOUBLE LIGHTS</label>
-            <label><input type="checkbox" id="pt3" value="pt3" v-model="caseSelect" />LIGHTS + 2-BAR</label>
-            <label><input type="checkbox" id="pt4" value="pt4" v-model="caseSelect" />LONE LIGHTS</label>
-            <label><input type="checkbox" id="pt5" value="pt5" v-model="caseSelect" />DOUBLE 2-BAR</label>
-            <label><input type="checkbox" id="pt6" value="pt6" v-model="caseSelect" />OUTSIDE 2-BAR</label>
-            <label><input type="checkbox" id="pt7" value="pt7" v-model="caseSelect" />INSIDE 2-BAR</label>
-            <label><input type="checkbox" id="pt8" value="pt8" v-model="caseSelect" />BOOKENDS NO BAR</label>
-            <label><input type="checkbox" id="pt9" value="pt9" v-model="caseSelect" />NO BOOKENDS</label>
+            <label
+              ><input type="checkbox" id="all" value="all" v-model="allSelect" @change="allSelectChange" />
+              <b>ALL</b>
+            </label>
+            <label><input type="checkbox" id="pt1" value="pt1" v-model="caseSelect" @change="caseChange" />3-BAR</label>
+            <label><input type="checkbox" id="pt2" value="pt2" v-model="caseSelect" @change="caseChange" />DOUBLE LIGHTS</label>
+            <label><input type="checkbox" id="pt3" value="pt3" v-model="caseSelect" @change="caseChange" />LIGHTS + 2-BAR</label>
+            <label><input type="checkbox" id="pt4" value="pt4" v-model="caseSelect" @change="caseChange" />LONE LIGHTS</label>
+            <label><input type="checkbox" id="pt5" value="pt5" v-model="caseSelect" @change="caseChange" />DOUBLE 2-BAR</label>
+            <label><input type="checkbox" id="pt6" value="pt6" v-model="caseSelect" @change="caseChange" />OUTSIDE 2-BAR</label>
+            <label><input type="checkbox" id="pt7" value="pt7" v-model="caseSelect" @change="caseChange" />INSIDE 2-BAR</label>
+            <label><input type="checkbox" id="pt8" value="pt8" v-model="caseSelect" @change="caseChange" />BOOKENDS NO BAR</label>
+            <label><input type="checkbox" id="pt9" value="pt9" v-model="caseSelect" @change="caseChange" />NO BOOKENDS</label>
           </div>
         </div>
 
