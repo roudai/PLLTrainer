@@ -301,7 +301,7 @@ const app = Vue.createApp({
       if (this.caseSelect.includes("pt6")) pattern = pattern.concat(this.PLL_No_Bookends_pattern);
 
       if (!algorithm.length) {
-        this.scramble = "you mast select a case.";
+        this.scramble = "you must select a case.";
         return;
       }
 
