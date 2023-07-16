@@ -276,7 +276,7 @@ const app = Vue.createApp({
       if (this.caseSelect.includes("pt6")) algorithm = algorithm.concat(this.PLL_Outside_2BAR);
       if (this.caseSelect.includes("pt7")) algorithm = algorithm.concat(this.PLL_Inside_2BAR);
       if (this.caseSelect.includes("pt8")) algorithm = algorithm.concat(this.PLL_Bookends_NoBAR);
-      if (this.caseSelect.includes("pt6")) algorithm = algorithm.concat(this.PLL_No_Bookends);
+      if (this.caseSelect.includes("pt9")) algorithm = algorithm.concat(this.PLL_No_Bookends);
 
       let arrow = [];
       if (this.caseSelect.includes("pt1")) arrow = arrow.concat(this.pll_3BAR_arrow);
@@ -287,7 +287,7 @@ const app = Vue.createApp({
       if (this.caseSelect.includes("pt6")) arrow = arrow.concat(this.PLL_Outside_2BAR_arrow);
       if (this.caseSelect.includes("pt7")) arrow = arrow.concat(this.PLL_Inside_2BAR_arrow);
       if (this.caseSelect.includes("pt8")) arrow = arrow.concat(this.PLL_Bookends_NoBAR_arrow);
-      if (this.caseSelect.includes("pt6")) arrow = arrow.concat(this.PLL_No_Bookends_arrow);
+      if (this.caseSelect.includes("pt9")) arrow = arrow.concat(this.PLL_No_Bookends_arrow);
 
       let pattern = [];
       if (this.caseSelect.includes("pt1")) pattern = pattern.concat(this.pll_3BAR_pattern);
@@ -298,7 +298,7 @@ const app = Vue.createApp({
       if (this.caseSelect.includes("pt6")) pattern = pattern.concat(this.PLL_Outside_2BAR_pattern);
       if (this.caseSelect.includes("pt7")) pattern = pattern.concat(this.PLL_Inside_2BAR_pattern);
       if (this.caseSelect.includes("pt8")) pattern = pattern.concat(this.PLL_Bookends_NoBAR_pattern);
-      if (this.caseSelect.includes("pt6")) pattern = pattern.concat(this.PLL_No_Bookends_pattern);
+      if (this.caseSelect.includes("pt9")) pattern = pattern.concat(this.PLL_No_Bookends_pattern);
 
       if (!algorithm.length) {
         this.scramble = "you must select a case.";
